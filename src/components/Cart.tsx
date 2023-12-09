@@ -4,15 +4,20 @@ import { ShoppingCart } from 'lucide-react'
 import {
   Sheet,
   SheetContent,
+  SheetFooter,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
 } from './ui/sheet'
 import { Separator } from './ui/separator'
 import { formatPrice } from '@/lib/utils'
+import Link from 'next/link'
+import { buttonVariants } from './ui/button'
 
 const Cart = () => {
   const itemCount = 2
+
+  const fee = 1
   return (
     <Sheet>
       {/* adding group to the SheetTrigger element, will allow us to add a trigger effect that is
@@ -44,13 +49,28 @@ const Cart = () => {
                   <span>Free</span>
                 </div>
               </div>
-              <div className='space-y-1.5 text-sm'>
-                <div className='flex'>
-                  <span className='flex-1'>Transaction Fee</span>
-                  <span>{formatPrice(1)}</span>
-                </div>
+              <div className='flex'>
+                <span className='flex-1'>Transaction Fee</span>
+                <span>{formatPrice(fee)}</span>
+              </div>
+              <div className='flex'>
+                <span className='flex-1'>Transaction Fee</span>
+                <span>{formatPrice(fee)}</span>
               </div>
             </div>
+
+            <SheetFooter>
+              <SheetTrigger asChild>
+                <Link
+                  href='/cart'
+                  className={buttonVariants({
+                    className: 'w-full',
+                  })}
+                >
+                  Continue to Checkout
+                </Link>
+              </SheetTrigger>
+            </SheetFooter>
           </>
         ) : (
           <div></div>
