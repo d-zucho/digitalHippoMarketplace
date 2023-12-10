@@ -35,7 +35,7 @@ const Page = () => {
   })
 
   const onSubmit = ({ email, password }: TAuthCredentialsValidator) => {
-    return 'a'
+    // send data to server for verification -- check if exist
   }
 
   return (
